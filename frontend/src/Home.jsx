@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 
 function Home() {
-    const [data, setData] = useState("");
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         axios.get('http://localhost:8081/')
@@ -18,6 +19,10 @@ function Home() {
     return (
         <div className='d-flex vh-100 align-items-center justify-content-center bg-secondary'>
             <div className='w-50 rounded p-3 bg-white'>
+                <h2>Student List</h2>
+                <div className='d-flex justify-content-end'>
+                    <Link to='/create' className=' btn btn-success'>create +</Link>
+                </div>
                 <table className='table '>
                     <thead>
                         <tr>

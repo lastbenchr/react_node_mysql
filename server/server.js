@@ -4,6 +4,7 @@ import cors from 'cors'
 
 const app = express();
 app.use(cors());
+app.use(express.json())
 
 // connection to database
 const db = createConnection({
@@ -21,6 +22,19 @@ app.get('/', (req, res)=> {
         return res.json(result);
     })
 })
+
+app.post('/student', (req, res)=>{
+    const sql = 'INSET INTO student (`name`, `email) VALUES (?)';
+    const values = [
+        req.body.name,
+        req.body.email
+    ]
+    db.query(sql, [values], (err, res)=>{
+        if(err) return res.json(err);
+        return res.json(res);
+    })  
+})
+
 
 //to run server
 app.listen(8081, ()=> {
