@@ -45,9 +45,9 @@ function Home() {
                         {data && data.map((ele, ind) => {
                             return (
                                 <tr key={ind}>
-                                    <td>{ele.id}</td>
-                                    <td>{ele.name}</td>
-                                    <td>{ele.email}</td>
+                                    <td>{ele.ID}</td>
+                                    <td>{ele.Name}</td>
+                                    <td>{ele.Email}</td>
                                     <td>
                                         <button className='btn btn-sm btn-info'>Read</button>
                                         <button className='btn btn-sm btn-primary mx-2'>Edit</button>
