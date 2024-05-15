@@ -15,6 +15,14 @@ function Home() {
     }, [])
 
 
+    const handleDelete = (id) => {
+        axios.delete(`http://localhost:8081/delete/${id}`)
+            .then(res => {
+                console.log(res);
+                window.location.reload();
+            })
+            .catch(err => console.log(err));
+    }
 
     return (
         <div className='d-flex vh-100 align-items-center justify-content-center bg-secondary'>
@@ -51,7 +59,7 @@ function Home() {
                                     <td>
                                         <Link to={`/read/${ele.ID}`} className='btn btn-sm btn-info'>Read</Link>
                                         <Link to={`/edit/${ele.ID}`} className='btn btn-sm btn-primary mx-2'>Edit</Link>
-                                        <button className='btn btn-sm btn-danger'>Delete</button>
+                                        <button onClick={() => handleDelete(ele.ID)} className='btn btn-sm btn-danger'>Delete</button>
                                     </td>
                                 </tr>
                             )

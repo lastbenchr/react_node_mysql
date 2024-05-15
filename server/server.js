@@ -59,6 +59,14 @@ app.put('/update/:id', (req, res)=> {
     })
 })
 
+app.delete('/delete/:id', (req, res)=> {
+    const sql = "DELETE FROM student WHERE ID = ?";
+    let ID = req.params.id;
+    db.query(sql,[ID], (err, result)=> {
+        if(err) return res.json({Message: "Error inside server"});
+        return res.json(result);
+    })
+})
 
 //to run server
 app.listen(8081, ()=> {
