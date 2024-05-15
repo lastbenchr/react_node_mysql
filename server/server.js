@@ -40,9 +40,20 @@ app.post('/student', (req, res) => {
 });
 
 app.get('/read/:id', (req, res)=> {
-    const sql = "SELECT * FROM student WHERE id = ?";
+    const sql = "SELECT * FROM student WHERE ID = ?";
     let ID = req.params.id;
     db.query(sql,[ID], (err, result)=> {
+        if(err) return res.json({Message: "Error inside server"});
+        return res.json(result);
+    })
+})
+
+app.put('/update/:id', (req, res)=> {
+    const sql = "UPDATE student SET `Name`=?, `Email`=? WHERE ID = ?";
+    let ID = req.params.id;
+    let Name = req.body.name;
+    let Email = req.body.email;
+    db.query(sql,[Name, Email, ID], (err, result)=> {
         if(err) return res.json({Message: "Error inside server"});
         return res.json(result);
     })
