@@ -21,7 +21,7 @@ function Home() {
             <div className='w-50 rounded p-3 bg-white'>
                 <h2>Student List</h2>
                 <div className='d-flex justify-content-end'>
-                    <Link to='/create' className=' btn btn-success'>create +</Link>
+                    <Link to='/create' className=' btn btn-success'>Add +</Link>
                 </div>
                 <table className='table '>
                     <thead>
@@ -42,14 +42,14 @@ function Home() {
                     </thead>
 
                     <tbody>
-                        {data && data.map((ele, ind) => {
+                        {Array.isArray(data) && data.map((ele, ind) => {
                             return (
                                 <tr key={ind}>
                                     <td>{ele.ID}</td>
                                     <td>{ele.Name}</td>
                                     <td>{ele.Email}</td>
                                     <td>
-                                        <button className='btn btn-sm btn-info'>Read</button>
+                                        <Link to={`/read/${ele.ID}`} className='btn btn-sm btn-info'>Read</Link>
                                         <button className='btn btn-sm btn-primary mx-2'>Edit</button>
                                         <button className='btn btn-sm btn-danger'>Delete</button>
                                     </td>
